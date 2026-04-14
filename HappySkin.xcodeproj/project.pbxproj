@@ -7,62 +7,62 @@
 	objects = {
 
 /* Begin PBXContainerItemProxy section */
-		28C2E1CA2F8E9B5A00786A8F /* PBXContainerItemProxy */ = {
+		28F6CBD12F8E9E8800AAE561 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 28C2E1AE2F8E9B5800786A8F /* Project object */;
+			containerPortal = 28F6CBB52F8E9E8600AAE561 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 28C2E1B52F8E9B5800786A8F;
-			remoteInfo = "Skin Guardian";
+			remoteGlobalIDString = 28F6CBBC2F8E9E8600AAE561;
+			remoteInfo = HappySkin;
 		};
-		28C2E1D42F8E9B5A00786A8F /* PBXContainerItemProxy */ = {
+		28F6CBDB2F8E9E8800AAE561 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 28C2E1AE2F8E9B5800786A8F /* Project object */;
+			containerPortal = 28F6CBB52F8E9E8600AAE561 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 28C2E1B52F8E9B5800786A8F;
-			remoteInfo = "Skin Guardian";
+			remoteGlobalIDString = 28F6CBBC2F8E9E8600AAE561;
+			remoteInfo = HappySkin;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		28C2E1B62F8E9B5800786A8F /* Skin Guardian.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Skin Guardian.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		28C2E1C92F8E9B5A00786A8F /* Skin GuardianTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Skin GuardianTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		28C2E1D32F8E9B5A00786A8F /* Skin GuardianUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Skin GuardianUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		28F6CBBD2F8E9E8600AAE561 /* HappySkin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HappySkin.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		28F6CBD02F8E9E8800AAE561 /* HappySkinTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HappySkinTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		28F6CBDA2F8E9E8800AAE561 /* HappySkinUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HappySkinUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		28C2E1B82F8E9B5800786A8F /* Skin Guardian */ = {
+		28F6CBBF2F8E9E8600AAE561 /* HappySkin */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = "Skin Guardian";
+			path = HappySkin;
 			sourceTree = "<group>";
 		};
-		28C2E1CC2F8E9B5A00786A8F /* Skin GuardianTests */ = {
+		28F6CBD32F8E9E8800AAE561 /* HappySkinTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = "Skin GuardianTests";
+			path = HappySkinTests;
 			sourceTree = "<group>";
 		};
-		28C2E1D62F8E9B5A00786A8F /* Skin GuardianUITests */ = {
+		28F6CBDD2F8E9E8800AAE561 /* HappySkinUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = "Skin GuardianUITests";
+			path = HappySkinUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		28C2E1B32F8E9B5800786A8F /* Frameworks */ = {
+		28F6CBBA2F8E9E8600AAE561 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		28C2E1C62F8E9B5A00786A8F /* Frameworks */ = {
+		28F6CBCD2F8E9E8800AAE561 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		28C2E1D02F8E9B5A00786A8F /* Frameworks */ = {
+		28F6CBD72F8E9E8800AAE561 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -72,22 +72,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		28C2E1AD2F8E9B5800786A8F = {
+		28F6CBB42F8E9E8600AAE561 = {
 			isa = PBXGroup;
 			children = (
-				28C2E1B82F8E9B5800786A8F /* Skin Guardian */,
-				28C2E1CC2F8E9B5A00786A8F /* Skin GuardianTests */,
-				28C2E1D62F8E9B5A00786A8F /* Skin GuardianUITests */,
-				28C2E1B72F8E9B5800786A8F /* Products */,
+				28F6CBBF2F8E9E8600AAE561 /* HappySkin */,
+				28F6CBD32F8E9E8800AAE561 /* HappySkinTests */,
+				28F6CBDD2F8E9E8800AAE561 /* HappySkinUITests */,
+				28F6CBBE2F8E9E8600AAE561 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		28C2E1B72F8E9B5800786A8F /* Products */ = {
+		28F6CBBE2F8E9E8600AAE561 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				28C2E1B62F8E9B5800786A8F /* Skin Guardian.app */,
-				28C2E1C92F8E9B5A00786A8F /* Skin GuardianTests.xctest */,
-				28C2E1D32F8E9B5A00786A8F /* Skin GuardianUITests.xctest */,
+				28F6CBBD2F8E9E8600AAE561 /* HappySkin.app */,
+				28F6CBD02F8E9E8800AAE561 /* HappySkinTests.xctest */,
+				28F6CBDA2F8E9E8800AAE561 /* HappySkinUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -95,134 +95,134 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		28C2E1B52F8E9B5800786A8F /* Skin Guardian */ = {
+		28F6CBBC2F8E9E8600AAE561 /* HappySkin */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 28C2E1DD2F8E9B5A00786A8F /* Build configuration list for PBXNativeTarget "Skin Guardian" */;
+			buildConfigurationList = 28F6CBE42F8E9E8800AAE561 /* Build configuration list for PBXNativeTarget "HappySkin" */;
 			buildPhases = (
-				28C2E1B22F8E9B5800786A8F /* Sources */,
-				28C2E1B32F8E9B5800786A8F /* Frameworks */,
-				28C2E1B42F8E9B5800786A8F /* Resources */,
+				28F6CBB92F8E9E8600AAE561 /* Sources */,
+				28F6CBBA2F8E9E8600AAE561 /* Frameworks */,
+				28F6CBBB2F8E9E8600AAE561 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				28C2E1B82F8E9B5800786A8F /* Skin Guardian */,
+				28F6CBBF2F8E9E8600AAE561 /* HappySkin */,
 			);
-			name = "Skin Guardian";
+			name = HappySkin;
 			packageProductDependencies = (
 			);
-			productName = "Skin Guardian";
-			productReference = 28C2E1B62F8E9B5800786A8F /* Skin Guardian.app */;
+			productName = HappySkin;
+			productReference = 28F6CBBD2F8E9E8600AAE561 /* HappySkin.app */;
 			productType = "com.apple.product-type.application";
 		};
-		28C2E1C82F8E9B5A00786A8F /* Skin GuardianTests */ = {
+		28F6CBCF2F8E9E8800AAE561 /* HappySkinTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 28C2E1E02F8E9B5A00786A8F /* Build configuration list for PBXNativeTarget "Skin GuardianTests" */;
+			buildConfigurationList = 28F6CBE72F8E9E8800AAE561 /* Build configuration list for PBXNativeTarget "HappySkinTests" */;
 			buildPhases = (
-				28C2E1C52F8E9B5A00786A8F /* Sources */,
-				28C2E1C62F8E9B5A00786A8F /* Frameworks */,
-				28C2E1C72F8E9B5A00786A8F /* Resources */,
+				28F6CBCC2F8E9E8800AAE561 /* Sources */,
+				28F6CBCD2F8E9E8800AAE561 /* Frameworks */,
+				28F6CBCE2F8E9E8800AAE561 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				28C2E1CB2F8E9B5A00786A8F /* PBXTargetDependency */,
+				28F6CBD22F8E9E8800AAE561 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				28C2E1CC2F8E9B5A00786A8F /* Skin GuardianTests */,
+				28F6CBD32F8E9E8800AAE561 /* HappySkinTests */,
 			);
-			name = "Skin GuardianTests";
+			name = HappySkinTests;
 			packageProductDependencies = (
 			);
-			productName = "Skin GuardianTests";
-			productReference = 28C2E1C92F8E9B5A00786A8F /* Skin GuardianTests.xctest */;
+			productName = HappySkinTests;
+			productReference = 28F6CBD02F8E9E8800AAE561 /* HappySkinTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		28C2E1D22F8E9B5A00786A8F /* Skin GuardianUITests */ = {
+		28F6CBD92F8E9E8800AAE561 /* HappySkinUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 28C2E1E32F8E9B5A00786A8F /* Build configuration list for PBXNativeTarget "Skin GuardianUITests" */;
+			buildConfigurationList = 28F6CBEA2F8E9E8800AAE561 /* Build configuration list for PBXNativeTarget "HappySkinUITests" */;
 			buildPhases = (
-				28C2E1CF2F8E9B5A00786A8F /* Sources */,
-				28C2E1D02F8E9B5A00786A8F /* Frameworks */,
-				28C2E1D12F8E9B5A00786A8F /* Resources */,
+				28F6CBD62F8E9E8800AAE561 /* Sources */,
+				28F6CBD72F8E9E8800AAE561 /* Frameworks */,
+				28F6CBD82F8E9E8800AAE561 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				28C2E1D52F8E9B5A00786A8F /* PBXTargetDependency */,
+				28F6CBDC2F8E9E8800AAE561 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				28C2E1D62F8E9B5A00786A8F /* Skin GuardianUITests */,
+				28F6CBDD2F8E9E8800AAE561 /* HappySkinUITests */,
 			);
-			name = "Skin GuardianUITests";
+			name = HappySkinUITests;
 			packageProductDependencies = (
 			);
-			productName = "Skin GuardianUITests";
-			productReference = 28C2E1D32F8E9B5A00786A8F /* Skin GuardianUITests.xctest */;
+			productName = HappySkinUITests;
+			productReference = 28F6CBDA2F8E9E8800AAE561 /* HappySkinUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		28C2E1AE2F8E9B5800786A8F /* Project object */ = {
+		28F6CBB52F8E9E8600AAE561 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1620;
 				LastUpgradeCheck = 1620;
 				TargetAttributes = {
-					28C2E1B52F8E9B5800786A8F = {
+					28F6CBBC2F8E9E8600AAE561 = {
 						CreatedOnToolsVersion = 16.2;
 					};
-					28C2E1C82F8E9B5A00786A8F = {
+					28F6CBCF2F8E9E8800AAE561 = {
 						CreatedOnToolsVersion = 16.2;
-						TestTargetID = 28C2E1B52F8E9B5800786A8F;
+						TestTargetID = 28F6CBBC2F8E9E8600AAE561;
 					};
-					28C2E1D22F8E9B5A00786A8F = {
+					28F6CBD92F8E9E8800AAE561 = {
 						CreatedOnToolsVersion = 16.2;
-						TestTargetID = 28C2E1B52F8E9B5800786A8F;
+						TestTargetID = 28F6CBBC2F8E9E8600AAE561;
 					};
 				};
 			};
-			buildConfigurationList = 28C2E1B12F8E9B5800786A8F /* Build configuration list for PBXProject "Skin Guardian" */;
+			buildConfigurationList = 28F6CBB82F8E9E8600AAE561 /* Build configuration list for PBXProject "HappySkin" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = 28C2E1AD2F8E9B5800786A8F;
+			mainGroup = 28F6CBB42F8E9E8600AAE561;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = 28C2E1B72F8E9B5800786A8F /* Products */;
+			productRefGroup = 28F6CBBE2F8E9E8600AAE561 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				28C2E1B52F8E9B5800786A8F /* Skin Guardian */,
-				28C2E1C82F8E9B5A00786A8F /* Skin GuardianTests */,
-				28C2E1D22F8E9B5A00786A8F /* Skin GuardianUITests */,
+				28F6CBBC2F8E9E8600AAE561 /* HappySkin */,
+				28F6CBCF2F8E9E8800AAE561 /* HappySkinTests */,
+				28F6CBD92F8E9E8800AAE561 /* HappySkinUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		28C2E1B42F8E9B5800786A8F /* Resources */ = {
+		28F6CBBB2F8E9E8600AAE561 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		28C2E1C72F8E9B5A00786A8F /* Resources */ = {
+		28F6CBCE2F8E9E8800AAE561 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		28C2E1D12F8E9B5A00786A8F /* Resources */ = {
+		28F6CBD82F8E9E8800AAE561 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -232,21 +232,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		28C2E1B22F8E9B5800786A8F /* Sources */ = {
+		28F6CBB92F8E9E8600AAE561 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		28C2E1C52F8E9B5A00786A8F /* Sources */ = {
+		28F6CBCC2F8E9E8800AAE561 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		28C2E1CF2F8E9B5A00786A8F /* Sources */ = {
+		28F6CBD62F8E9E8800AAE561 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -256,20 +256,20 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		28C2E1CB2F8E9B5A00786A8F /* PBXTargetDependency */ = {
+		28F6CBD22F8E9E8800AAE561 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 28C2E1B52F8E9B5800786A8F /* Skin Guardian */;
-			targetProxy = 28C2E1CA2F8E9B5A00786A8F /* PBXContainerItemProxy */;
+			target = 28F6CBBC2F8E9E8600AAE561 /* HappySkin */;
+			targetProxy = 28F6CBD12F8E9E8800AAE561 /* PBXContainerItemProxy */;
 		};
-		28C2E1D52F8E9B5A00786A8F /* PBXTargetDependency */ = {
+		28F6CBDC2F8E9E8800AAE561 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 28C2E1B52F8E9B5800786A8F /* Skin Guardian */;
-			targetProxy = 28C2E1D42F8E9B5A00786A8F /* PBXContainerItemProxy */;
+			target = 28F6CBBC2F8E9E8600AAE561 /* HappySkin */;
+			targetProxy = 28F6CBDB2F8E9E8800AAE561 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		28C2E1DB2F8E9B5A00786A8F /* Debug */ = {
+		28F6CBE22F8E9E8800AAE561 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -330,7 +330,7 @@
 			};
 			name = Debug;
 		};
-		28C2E1DC2F8E9B5A00786A8F /* Release */ = {
+		28F6CBE32F8E9E8800AAE561 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -383,15 +383,15 @@
 			};
 			name = Release;
 		};
-		28C2E1DE2F8E9B5A00786A8F /* Debug */ = {
+		28F6CBE52F8E9E8800AAE561 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "Skin Guardian/Skin_Guardian.entitlements";
+				CODE_SIGN_ENTITLEMENTS = HappySkin/HappySkin.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Skin Guardian/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"HappySkin/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
@@ -409,7 +409,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "GAF.UANL.Skin-Guardian";
+				PRODUCT_BUNDLE_IDENTIFIER = GAF.UANL.HappySkin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
@@ -420,15 +420,15 @@
 			};
 			name = Debug;
 		};
-		28C2E1DF2F8E9B5A00786A8F /* Release */ = {
+		28F6CBE62F8E9E8800AAE561 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "Skin Guardian/Skin_Guardian.entitlements";
+				CODE_SIGN_ENTITLEMENTS = HappySkin/HappySkin.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Skin Guardian/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"HappySkin/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
@@ -446,7 +446,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "GAF.UANL.Skin-Guardian";
+				PRODUCT_BUNDLE_IDENTIFIER = GAF.UANL.HappySkin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
@@ -457,7 +457,7 @@
 			};
 			name = Release;
 		};
-		28C2E1E12F8E9B5A00786A8F /* Debug */ = {
+		28F6CBE82F8E9E8800AAE561 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -467,19 +467,19 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
 				MACOSX_DEPLOYMENT_TARGET = 14.7;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "GAF.UANL.Skin-GuardianTests";
+				PRODUCT_BUNDLE_IDENTIFIER = GAF.UANL.HappySkinTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Skin Guardian.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Skin Guardian";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HappySkin.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/HappySkin";
 				XROS_DEPLOYMENT_TARGET = 2.2;
 			};
 			name = Debug;
 		};
-		28C2E1E22F8E9B5A00786A8F /* Release */ = {
+		28F6CBE92F8E9E8800AAE561 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -489,19 +489,19 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
 				MACOSX_DEPLOYMENT_TARGET = 14.7;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "GAF.UANL.Skin-GuardianTests";
+				PRODUCT_BUNDLE_IDENTIFIER = GAF.UANL.HappySkinTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Skin Guardian.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Skin Guardian";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HappySkin.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/HappySkin";
 				XROS_DEPLOYMENT_TARGET = 2.2;
 			};
 			name = Release;
 		};
-		28C2E1E42F8E9B5A00786A8F /* Debug */ = {
+		28F6CBEB2F8E9E8800AAE561 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -510,19 +510,19 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
 				MACOSX_DEPLOYMENT_TARGET = 14.7;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "GAF.UANL.Skin-GuardianUITests";
+				PRODUCT_BUNDLE_IDENTIFIER = GAF.UANL.HappySkinUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
-				TEST_TARGET_NAME = "Skin Guardian";
+				TEST_TARGET_NAME = HappySkin;
 				XROS_DEPLOYMENT_TARGET = 2.2;
 			};
 			name = Debug;
 		};
-		28C2E1E52F8E9B5A00786A8F /* Release */ = {
+		28F6CBEC2F8E9E8800AAE561 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -531,14 +531,14 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
 				MACOSX_DEPLOYMENT_TARGET = 14.7;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "GAF.UANL.Skin-GuardianUITests";
+				PRODUCT_BUNDLE_IDENTIFIER = GAF.UANL.HappySkinUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
-				TEST_TARGET_NAME = "Skin Guardian";
+				TEST_TARGET_NAME = HappySkin;
 				XROS_DEPLOYMENT_TARGET = 2.2;
 			};
 			name = Release;
@@ -546,43 +546,43 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		28C2E1B12F8E9B5800786A8F /* Build configuration list for PBXProject "Skin Guardian" */ = {
+		28F6CBB82F8E9E8600AAE561 /* Build configuration list for PBXProject "HappySkin" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				28C2E1DB2F8E9B5A00786A8F /* Debug */,
-				28C2E1DC2F8E9B5A00786A8F /* Release */,
+				28F6CBE22F8E9E8800AAE561 /* Debug */,
+				28F6CBE32F8E9E8800AAE561 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		28C2E1DD2F8E9B5A00786A8F /* Build configuration list for PBXNativeTarget "Skin Guardian" */ = {
+		28F6CBE42F8E9E8800AAE561 /* Build configuration list for PBXNativeTarget "HappySkin" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				28C2E1DE2F8E9B5A00786A8F /* Debug */,
-				28C2E1DF2F8E9B5A00786A8F /* Release */,
+				28F6CBE52F8E9E8800AAE561 /* Debug */,
+				28F6CBE62F8E9E8800AAE561 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		28C2E1E02F8E9B5A00786A8F /* Build configuration list for PBXNativeTarget "Skin GuardianTests" */ = {
+		28F6CBE72F8E9E8800AAE561 /* Build configuration list for PBXNativeTarget "HappySkinTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				28C2E1E12F8E9B5A00786A8F /* Debug */,
-				28C2E1E22F8E9B5A00786A8F /* Release */,
+				28F6CBE82F8E9E8800AAE561 /* Debug */,
+				28F6CBE92F8E9E8800AAE561 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		28C2E1E32F8E9B5A00786A8F /* Build configuration list for PBXNativeTarget "Skin GuardianUITests" */ = {
+		28F6CBEA2F8E9E8800AAE561 /* Build configuration list for PBXNativeTarget "HappySkinUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				28C2E1E42F8E9B5A00786A8F /* Debug */,
-				28C2E1E52F8E9B5A00786A8F /* Release */,
+				28F6CBEB2F8E9E8800AAE561 /* Debug */,
+				28F6CBEC2F8E9E8800AAE561 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 28C2E1AE2F8E9B5800786A8F /* Project object */;
+	rootObject = 28F6CBB52F8E9E8600AAE561 /* Project object */;
 }

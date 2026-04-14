@@ -1,6 +1,6 @@
 //
 //  ContentView.swift
-//  Skin Guardian
+//  HappySkin
 //
 //  Created by Abraham Castañeda Quintero on 14/04/26.
 //

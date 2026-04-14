@@ -1,6 +1,6 @@
 //
-//  Skin_GuardianApp.swift
-//  Skin Guardian
+//  HappySkinApp.swift
+//  HappySkin
 //
 //  Created by Abraham Castañeda Quintero on 14/04/26.
 //
@@ -9,7 +9,7 @@ import SwiftUI
 import SwiftData
 
 @main
-struct Skin_GuardianApp: App {
+struct HappySkinApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             Item.self,

@@ -1,13 +1,13 @@
 //
-//  Skin_GuardianUITestsLaunchTests.swift
-//  Skin GuardianUITests
+//  HappySkinUITestsLaunchTests.swift
+//  HappySkinUITests
 //
 //  Created by Abraham Castañeda Quintero on 14/04/26.
 //
 
 import XCTest
 
-final class Skin_GuardianUITestsLaunchTests: XCTestCase {
+final class HappySkinUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true
