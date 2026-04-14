@@ -15,7 +15,7 @@
 		28F6CC012F8EB10000AAE561 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 28F6CC002F8EB10000AAE561 /* FirebaseAuth */; };
 		28F6CC032F8EB10000AAE561 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 28F6CC022F8EB10000AAE561 /* GoogleSignIn */; };
 		28F6CC052F8EB10000AAE561 /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 28F6CC042F8EB10000AAE561 /* FacebookLogin */; };
-		28F6CC072F8EB10000AAE561 /* FBSDKCoreKit in Frameworks */ = {isa = PBXBuildFile; productRef = 28F6CC062F8EB10000AAE561 /* FBSDKCoreKit */; };
+		28F6CC072F8EB10000AAE561 /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = 28F6CC062F8EB10000AAE561 /* FacebookCore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,7 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				28F6CC072F8EB10000AAE561 /* FBSDKCoreKit in Frameworks */,
+				28F6CC072F8EB10000AAE561 /* FacebookCore in Frameworks */,
 				28F6CC052F8EB10000AAE561 /* FacebookLogin in Frameworks */,
 				28F6CC032F8EB10000AAE561 /* GoogleSignIn in Frameworks */,
 				28F6CC012F8EB10000AAE561 /* FirebaseAuth in Frameworks */,
@@ -425,6 +425,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = HappySkin/HappySkin.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGNING_ALLOWED = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"HappySkin/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
@@ -459,6 +460,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = HappySkin/HappySkin.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGNING_ALLOWED = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"HappySkin/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
@@ -491,6 +493,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGNING_ALLOWED = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
@@ -511,6 +514,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGNING_ALLOWED = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
@@ -530,6 +534,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGNING_ALLOWED = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
@@ -549,6 +554,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGNING_ALLOWED = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
@@ -648,10 +654,10 @@
 			package = 28F6CC092F8EB10000AAE561 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
 			productName = FacebookLogin;
 		};
-		28F6CC062F8EB10000AAE561 /* FBSDKCoreKit */ = {
+		28F6CC062F8EB10000AAE561 /* FacebookCore */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 28F6CC092F8EB10000AAE561 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
-			productName = FBSDKCoreKit;
+			productName = FacebookCore;
 		};
 		28F6CBF02F8EA1A800AAE561 /* FirebaseAI */ = {
 			isa = XCSwiftPackageProductDependency;
