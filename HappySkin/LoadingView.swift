@@ -4,9 +4,6 @@
 //
 
 import SwiftUI
-#if canImport(UIKit)
-import UIKit
-#endif
 
 struct LoadingView: View {
     var body: some View {
@@ -20,28 +17,10 @@ struct LoadingView: View {
         }
     }
 
-    @ViewBuilder
     private var logoImage: some View {
-#if canImport(UIKit)
-        if let path = Bundle.main.path(forResource: "logo", ofType: "png", inDirectory: "Images"),
-           let uiImage = UIImage(contentsOfFile: path) {
-            Image(uiImage: uiImage)
-                .resizable()
-                .scaledToFit()
-        } else {
-            Image(systemName: "sparkles")
-                .resizable()
-                .scaledToFit()
-                .foregroundStyle(Color(red: 76 / 255, green: 154 / 255, blue: 1))
-                .padding(64)
-        }
-#else
-        Image(systemName: "sparkles")
+        Image("Logo")
             .resizable()
             .scaledToFit()
-            .foregroundStyle(Color(red: 76 / 255, green: 154 / 255, blue: 1))
-            .padding(64)
-#endif
     }
 }
 
