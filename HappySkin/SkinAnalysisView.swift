@@ -9,6 +9,7 @@ struct SkinAnalysisView: View {
     @StateObject private var viewModel = SkinAnalysisViewModel()
     @State private var showCamera = false
     @State private var showCameraUnavailable = false
+    @State private var showFullResponse = false
 
     var body: some View {
         ZStack {
@@ -36,10 +37,7 @@ struct SkinAnalysisView: View {
                     analyzeButton
 
                     if viewModel.isAnalyzing {
-                        ProgressView("Analizando imagen...")
-                            .tint(.white)
-                            .foregroundStyle(.white.opacity(0.9))
-                            .padding(.horizontal, 8)
+                        analyzingCard
                     }
 
                     if let saveMessage = viewModel.saveMessage {
@@ -58,6 +56,9 @@ struct SkinAnalysisView: View {
                     if !viewModel.analysisResult.isEmpty {
                         analysisCard
                     }
+
+                    Color.clear
+                        .frame(height: 120)
                 }
                 .padding(.horizontal, 20)
                 .padding(.top, 18)
@@ -69,6 +70,9 @@ struct SkinAnalysisView: View {
         .sheet(isPresented: $showCamera) {
             CameraPicker(image: $viewModel.selectedImage)
                 .ignoresSafeArea()
+        }
+        .sheet(isPresented: $showFullResponse) {
+            fullResponseSheet
         }
         .alert("Camara no disponible", isPresented: $showCameraUnavailable) {
             Button("Aceptar", role: .cancel) {}
@@ -105,17 +109,44 @@ struct SkinAnalysisView: View {
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                         .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
                 } else {
-                    RoundedRectangle(cornerRadius: 2, style: .continuous)
-                        .fill(Color.white.opacity(0.9))
-                        .frame(width: 200, height: 200)
+                    RoundedRectangle(cornerRadius: 24, style: .continuous)
+                        .fill(Color(red: 14 / 255, green: 28 / 255, blue: 48 / 255))
+                        .frame(width: 220, height: 220)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 24, style: .continuous)
+                                .stroke(Color.white.opacity(0.08), lineWidth: 1)
+                        )
                         .overlay {
                             Image(systemName: "camera")
-                                .font(.system(size: 104, weight: .regular))
-                                .foregroundStyle(.black)
+                                .font(.system(size: 96, weight: .regular))
+                                .foregroundStyle(Color.white.opacity(0.9))
                         }
                 }
             }
             .clipped()
+    }
+
+    private var analyzingCard: some View {
+        HStack(spacing: 12) {
+            ProgressView()
+                .tint(.white)
+            VStack(alignment: .leading, spacing: 4) {
+                Text("Analizando tu imagen")
+                    .font(.system(size: 15, weight: .semibold))
+                    .foregroundStyle(.white)
+                Text("Estamos revisando la foto y preparando una respuesta completa.")
+                    .font(.system(size: 12, weight: .medium))
+                    .foregroundStyle(Color.white.opacity(0.75))
+            }
+        }
+        .padding(14)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(Color(red: 20 / 255, green: 33 / 255, blue: 53 / 255))
+        .overlay(
+            RoundedRectangle(cornerRadius: 14, style: .continuous)
+                .stroke(Color.white.opacity(0.08), lineWidth: 1)
+        )
+        .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
     }
 
     private var cameraButton: some View {
@@ -201,49 +232,111 @@ struct SkinAnalysisView: View {
                 .font(.system(size: 27, weight: .bold, design: .rounded))
                 .foregroundStyle(Color(red: 85 / 255, green: 166 / 255, blue: 1))
 
-            RoundedRectangle(cornerRadius: 16, style: .continuous)
-                .fill(Color(red: 20 / 255, green: 33 / 255, blue: 53 / 255))
-                .overlay(
-                    RoundedRectangle(cornerRadius: 16, style: .continuous)
-                        .stroke(Color.white.opacity(0.05), lineWidth: 1)
-                )
-                .overlay(alignment: .topLeading) {
-                    VStack(alignment: .leading, spacing: 10) {
-                        infoBlock(title: "Resumen", value: section.summary)
+            VStack(alignment: .leading, spacing: 10) {
+                infoBlock(title: "Resumen", value: section.summary)
 
-                        HStack(spacing: 10) {
-                            Text("Nivel:")
-                                .font(.system(size: 12, weight: .semibold))
-                                .foregroundStyle(Color.white.opacity(0.92))
-                            Text(section.level)
-                                .font(.system(size: 12, weight: .bold))
-                                .foregroundStyle(levelColor(for: section.level))
-                        }
-                        .padding(.horizontal, 10)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .frame(height: 30)
-                        .background(Color(red: 11 / 255, green: 23 / 255, blue: 40 / 255))
-                        .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
-
-                        HStack(spacing: 10) {
-                            Text("Confianza:")
-                                .font(.system(size: 12, weight: .semibold))
-                                .foregroundStyle(Color.white.opacity(0.92))
-                            Text(section.confidence)
-                                .font(.system(size: 12, weight: .bold))
-                                .foregroundStyle(Color(red: 102 / 255, green: 175 / 255, blue: 1))
-                        }
-                        .padding(.horizontal, 10)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .frame(height: 30)
-                        .background(Color(red: 11 / 255, green: 23 / 255, blue: 40 / 255))
-                        .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
-
-                        infoBlock(title: "Recomendaciones", value: section.recommendations)
-                    }
-                    .padding(10)
+                HStack(spacing: 10) {
+                    Text("Nivel:")
+                        .font(.system(size: 12, weight: .semibold))
+                        .foregroundStyle(Color.white.opacity(0.92))
+                    Text(section.level)
+                        .font(.system(size: 12, weight: .bold))
+                        .foregroundStyle(levelColor(for: section.level))
                 }
+                .padding(.horizontal, 10)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .frame(height: 30)
+                .background(Color(red: 11 / 255, green: 23 / 255, blue: 40 / 255))
+                .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+
+                HStack(spacing: 10) {
+                    Text("Confianza:")
+                        .font(.system(size: 12, weight: .semibold))
+                        .foregroundStyle(Color.white.opacity(0.92))
+                    Text(section.confidence)
+                        .font(.system(size: 12, weight: .bold))
+                        .foregroundStyle(Color(red: 102 / 255, green: 175 / 255, blue: 1))
+                }
+                .padding(.horizontal, 10)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .frame(height: 30)
+                .background(Color(red: 11 / 255, green: 23 / 255, blue: 40 / 255))
+                .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+
+                infoBlock(title: "Recomendaciones", value: section.recommendations)
+
+                Button {
+                    showFullResponse = true
+                } label: {
+                    Text("Ver respuesta completa")
+                        .font(.system(size: 13, weight: .semibold))
+                        .foregroundStyle(Color(red: 107 / 255, green: 179 / 255, blue: 1))
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 10)
+                        .background(Color(red: 11 / 255, green: 23 / 255, blue: 40 / 255))
+                        .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
+                }
+                .buttonStyle(.plain)
+            }
+            .padding(10)
+            .background(Color(red: 20 / 255, green: 33 / 255, blue: 53 / 255))
+            .overlay(
+                RoundedRectangle(cornerRadius: 16, style: .continuous)
+                    .stroke(Color.white.opacity(0.05), lineWidth: 1)
+            )
+            .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
         }
+    }
+
+    private var fullResponseSheet: some View {
+        NavigationStack {
+            ZStack {
+                LinearGradient(
+                    colors: [
+                        Color(red: 8 / 255, green: 14 / 255, blue: 26 / 255),
+                        Color(red: 14 / 255, green: 28 / 255, blue: 48 / 255),
+                        Color(red: 8 / 255, green: 14 / 255, blue: 26 / 255),
+                    ],
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing
+                )
+                .ignoresSafeArea()
+
+                ScrollView {
+                    VStack(alignment: .leading, spacing: 14) {
+                        Text("Respuesta completa del modelo")
+                            .font(.system(size: 24, weight: .bold, design: .rounded))
+                            .foregroundStyle(Color(red: 230 / 255, green: 237 / 255, blue: 243 / 255))
+
+                        Text("El texto de abajo se muestra completo para que puedas revisar cada parte del analisis.")
+                            .font(.system(size: 13, weight: .medium))
+                            .foregroundStyle(Color.white.opacity(0.72))
+
+                        Text(viewModel.analysisResult)
+                            .font(.system(size: 15, weight: .regular))
+                            .foregroundStyle(Color(red: 230 / 255, green: 237 / 255, blue: 243 / 255))
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .padding(16)
+                            .background(Color(red: 26 / 255, green: 34 / 255, blue: 48 / 255))
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 14, style: .continuous)
+                                    .stroke(Color.white.opacity(0.08), lineWidth: 1)
+                            )
+                            .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+                            .textSelection(.enabled)
+                    }
+                    .padding(18)
+                }
+            }
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button("Cerrar") {
+                        showFullResponse = false
+                    }
+                }
+            }
+        }
+        .presentationDetents([.medium, .large])
     }
 
     private func infoBlock(title: String, value: String) -> some View {

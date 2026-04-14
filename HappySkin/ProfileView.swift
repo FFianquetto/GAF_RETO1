@@ -34,103 +34,212 @@ struct ProfileView: View {
         ZStack {
             LinearGradient(
                 colors: [
-                    Color(red: 245 / 255, green: 250 / 255, blue: 1),
-                    Color(red: 234 / 255, green: 244 / 255, blue: 1),
+                    Color(red: 11 / 255, green: 15 / 255, blue: 20 / 255),
+                    Color(red: 16 / 255, green: 25 / 255, blue: 38 / 255),
+                    Color(red: 11 / 255, green: 15 / 255, blue: 20 / 255),
                 ],
                 startPoint: .topLeading,
                 endPoint: .bottomTrailing
             )
             .ignoresSafeArea()
 
-            ScrollView {
-                VStack(alignment: .leading, spacing: 18) {
-                    Text("Perfil")
-                        .font(.largeTitle.bold())
+            Circle()
+                .fill(Color(red: 76 / 255, green: 154 / 255, blue: 1).opacity(0.14))
+                .frame(width: 260, height: 260)
+                .blur(radius: 34)
+                .offset(x: 135, y: -260)
 
-                    Text("Estas configuraciones se guardan en Firestore dentro de la coleccion Users para tu sesion actual.")
-                        .font(.subheadline)
-                        .foregroundStyle(.secondary)
+            ScrollView {
+                VStack(alignment: .leading, spacing: 14) {
+                    headerCard
+                    profileCard
+                    preferencesCard
+                    actionsCard
 
                     if let feedback {
-                        HStack(spacing: 10) {
-                            Image(systemName: feedback.isError ? "xmark.octagon.fill" : "checkmark.circle.fill")
-                            Text(feedback.text)
-                                .font(.subheadline.weight(.semibold))
-                        }
-                        .foregroundStyle(.white)
-                        .padding(.horizontal, 14)
-                        .padding(.vertical, 12)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .background(feedback.isError ? Color.red.opacity(0.9) : Color.green.opacity(0.82))
-                        .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
-                        .transition(.move(edge: .top).combined(with: .opacity))
+                        feedbackCard(feedback)
                     }
-
-                    VStack(alignment: .leading, spacing: 14) {
-                        Text("Nombre a mostrar")
-                            .font(.headline)
-                        TextField("Tu nombre", text: $displayName)
-                            .profileInputStyle()
-
-                        Text("Tipo de piel")
-                            .font(.headline)
-                        Picker("Tipo de piel", selection: $skinType) {
-                            ForEach(availableSkinTypes, id: \.value) { type in
-                                Text(type.label).tag(type.value)
-                            }
-                        }
-                        .pickerStyle(.menu)
-
-                        Text("Idioma preferido")
-                            .font(.headline)
-                        Picker("Idioma", selection: $preferredLanguage) {
-                            Text("Español").tag("es")
-                            Text("English").tag("en")
-                        }
-                        .pickerStyle(.segmented)
-
-                        Toggle("Recibir recomendaciones y recordatorios", isOn: $notificationsEnabled)
-                            .font(.headline)
-                    }
-                    .padding(18)
-                    .background(
-                        RoundedRectangle(cornerRadius: 20, style: .continuous)
-                            .fill(Color.white.opacity(0.9))
-                    )
-
-                    Button {
-                        Task {
-                            await saveProfile()
-                        }
-                    } label: {
-                        HStack {
-                            if isSaving {
-                                ProgressView()
-                                    .tint(.white)
-                            } else {
-                                Image(systemName: "checkmark.circle.fill")
-                                Text("Guardar perfil")
-                                    .fontWeight(.semibold)
-                            }
-                        }
-                        .frame(maxWidth: .infinity)
-                        .frame(height: 50)
-                    }
-                    .buttonStyle(.borderedProminent)
-                    .disabled(isSaving)
-
-                    Button("Cerrar sesión", role: .destructive) {
-                        authViewModel.signOut()
-                    }
-                    .buttonStyle(.bordered)
                 }
-                .padding()
+                .padding(.horizontal, 22)
+                .padding(.top, 42)
+                .padding(.bottom, 24)
             }
         }
-        .navigationTitle("Mi perfil")
+        .navigationTitle("Perfil")
+        .navigationBarTitleDisplayMode(.inline)
         .onAppear {
             loadCurrentProfile()
         }
+    }
+
+    private var headerCard: some View {
+        RoundedRectangle(cornerRadius: 20, style: .continuous)
+            .fill(Color(red: 26 / 255, green: 34 / 255, blue: 48 / 255))
+            .overlay(
+                RoundedRectangle(cornerRadius: 20, style: .continuous)
+                    .stroke(Color.white.opacity(0.12), lineWidth: 1.5)
+            )
+            .frame(height: 136)
+            .overlay {
+                HStack(alignment: .center, spacing: 14) {
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text("Tu configuración")
+                            .font(.system(size: 15, weight: .semibold))
+                            .foregroundStyle(Color(red: 107 / 255, green: 179 / 255, blue: 1))
+
+                        Text(displayName.isEmpty ? "Usuario" : displayName)
+                            .font(.system(size: 33, weight: .bold, design: .rounded))
+                            .foregroundStyle(Color(red: 76 / 255, green: 154 / 255, blue: 1))
+                            .lineLimit(2)
+                            .minimumScaleFactor(0.75)
+
+                        Text(authViewModel.user?.email ?? "")
+                            .font(.system(size: 12, weight: .medium))
+                            .foregroundStyle(Color(red: 230 / 255, green: 237 / 255, blue: 243 / 255).opacity(0.8))
+                            .lineLimit(1)
+                    }
+
+                    Spacer(minLength: 12)
+
+                    Image(systemName: "person.crop.circle.fill")
+                        .font(.system(size: 56))
+                        .foregroundStyle(Color(red: 107 / 255, green: 179 / 255, blue: 1))
+                }
+                .padding(16)
+            }
+    }
+
+    private var profileCard: some View {
+        cardContainer {
+            VStack(alignment: .leading, spacing: 12) {
+                sectionTitle("Datos principales")
+
+                VStack(alignment: .leading, spacing: 10) {
+                    Text("Nombre a mostrar")
+                        .font(.system(size: 14, weight: .semibold))
+                        .foregroundStyle(Color(red: 107 / 255, green: 179 / 255, blue: 1))
+                    TextField("Tu nombre", text: $displayName)
+                        .profileInputStyle()
+
+                    Text("Tipo de piel")
+                        .font(.system(size: 14, weight: .semibold))
+                        .foregroundStyle(Color(red: 107 / 255, green: 179 / 255, blue: 1))
+                    Picker("Tipo de piel", selection: $skinType) {
+                        ForEach(availableSkinTypes, id: \.value) { type in
+                            Text(type.label).tag(type.value)
+                        }
+                    }
+                    .pickerStyle(.menu)
+                    .tint(Color(red: 76 / 255, green: 154 / 255, blue: 1))
+                }
+            }
+        }
+    }
+
+    private var preferencesCard: some View {
+        cardContainer {
+            VStack(alignment: .leading, spacing: 12) {
+                sectionTitle("Preferencias")
+
+                VStack(alignment: .leading, spacing: 10) {
+                    Text("Idioma preferido")
+                        .font(.system(size: 14, weight: .semibold))
+                        .foregroundStyle(Color(red: 107 / 255, green: 179 / 255, blue: 1))
+
+                    Picker("Idioma", selection: $preferredLanguage) {
+                        Text("Español").tag("es")
+                        Text("English").tag("en")
+                    }
+                    .pickerStyle(.segmented)
+
+                    Toggle("Recibir recomendaciones y recordatorios", isOn: $notificationsEnabled)
+                        .font(.system(size: 14, weight: .semibold))
+                        .tint(Color(red: 76 / 255, green: 154 / 255, blue: 1))
+                        .padding(.top, 4)
+                }
+            }
+        }
+    }
+
+    private var actionsCard: some View {
+        cardContainer {
+            VStack(alignment: .leading, spacing: 14) {
+                sectionTitle("Acciones")
+
+                Button {
+                    Task {
+                        await saveProfile()
+                    }
+                } label: {
+                    HStack(spacing: 10) {
+                        if isSaving {
+                            ProgressView()
+                                .tint(.white)
+                        } else {
+                            Image(systemName: "checkmark.circle.fill")
+                                .font(.system(size: 18))
+                        }
+                        Text(isSaving ? "Guardando..." : "Guardar perfil")
+                            .font(.system(size: 18, weight: .semibold, design: .rounded))
+                    }
+                    .foregroundStyle(Color(red: 230 / 255, green: 237 / 255, blue: 243 / 255))
+                    .frame(maxWidth: .infinity)
+                    .frame(height: 52)
+                    .background(Color(red: 76 / 255, green: 154 / 255, blue: 1))
+                    .clipShape(Capsule())
+                }
+                .disabled(isSaving)
+                .buttonStyle(.plain)
+
+                Button("Cerrar sesión", role: .destructive) {
+                    authViewModel.signOut()
+                }
+                .font(.system(size: 14, weight: .semibold))
+                .frame(maxWidth: .infinity)
+                .frame(height: 44)
+                .foregroundStyle(Color.white.opacity(0.9))
+                .background(Color(red: 19 / 255, green: 26 / 255, blue: 36 / 255))
+                .overlay(
+                    Capsule()
+                        .stroke(Color.red.opacity(0.35), lineWidth: 1.2)
+                )
+            }
+        }
+    }
+
+    private func feedbackCard(_ feedback: FeedbackMessage) -> some View {
+        HStack(spacing: 10) {
+            Image(systemName: feedback.isError ? "xmark.octagon.fill" : "checkmark.circle.fill")
+            Text(feedback.text)
+                .font(.system(size: 13, weight: .semibold))
+                .fixedSize(horizontal: false, vertical: true)
+        }
+        .foregroundStyle(.white)
+        .padding(.horizontal, 14)
+        .padding(.vertical, 12)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(feedback.isError ? Color.red.opacity(0.88) : Color.green.opacity(0.8))
+        .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+        .transition(.move(edge: .top).combined(with: .opacity))
+    }
+
+    private func cardContainer<Content: View>(@ViewBuilder content: () -> Content) -> some View {
+        content()
+            .padding(18)
+            .background(
+                RoundedRectangle(cornerRadius: 20, style: .continuous)
+                    .fill(Color(red: 26 / 255, green: 34 / 255, blue: 48 / 255))
+            )
+            .overlay(
+                RoundedRectangle(cornerRadius: 20, style: .continuous)
+                    .stroke(Color.white.opacity(0.1), lineWidth: 1.5)
+            )
+    }
+
+    private func sectionTitle(_ title: String) -> some View {
+        Text(title)
+            .font(.system(size: 18, weight: .semibold, design: .rounded))
+            .foregroundStyle(Color(red: 230 / 255, green: 237 / 255, blue: 243 / 255))
     }
 
     private func loadCurrentProfile() {
@@ -200,15 +309,16 @@ struct ProfileView: View {
 private extension View {
     func profileInputStyle() -> some View {
         self
-            .padding(.horizontal, 12)
-            .frame(height: 44)
+            .padding(.horizontal, 14)
+            .frame(height: 48)
+            .foregroundStyle(Color(red: 230 / 255, green: 237 / 255, blue: 243 / 255))
             .background(
-                RoundedRectangle(cornerRadius: 12, style: .continuous)
-                    .fill(Color.white)
+                RoundedRectangle(cornerRadius: 14, style: .continuous)
+                    .fill(Color(red: 20 / 255, green: 31 / 255, blue: 45 / 255))
             )
             .overlay(
-                RoundedRectangle(cornerRadius: 12, style: .continuous)
-                    .stroke(Color(red: 76 / 255, green: 154 / 255, blue: 1).opacity(0.35), lineWidth: 1)
+                RoundedRectangle(cornerRadius: 14, style: .continuous)
+                    .stroke(Color(red: 107 / 255, green: 179 / 255, blue: 1).opacity(0.55), lineWidth: 1.2)
             )
     }
 }

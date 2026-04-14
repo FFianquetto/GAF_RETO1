@@ -28,7 +28,10 @@ class AppDelegate: NSObject, UIApplicationDelegate {
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         FirebaseApp.configure()
         DailyNotificationManager.shared.configureDailyReminders()
-        UINavigationItem.appearance().backButtonDisplayMode = .minimal
+        UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(
+            UIOffset(horizontal: -1000, vertical: 0),
+            for: .default
+        )
 #if canImport(FacebookCore)
     ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
 #endif
