@@ -10,31 +10,41 @@ struct MainScreenView: View {
 
     var body: some View {
         NavigationStack {
-            VStack(alignment: .leading, spacing: 16) {
-                Text("Main Screen")
-                    .font(.largeTitle.bold())
-
-                if let email = authViewModel.user?.email, !email.isEmpty {
-                    Text("Sesión iniciada como \(email)")
-                        .foregroundStyle(.secondary)
-                } else {
-                    Text("Sesión iniciada")
-                        .foregroundStyle(.secondary)
+            List {
+                Section("Bienvenido") {
+                    if let email = authViewModel.user?.email, !email.isEmpty {
+                        Text("Sesión iniciada como \(email)")
+                            .foregroundStyle(.secondary)
+                    } else {
+                        Text("Sesión iniciada")
+                            .foregroundStyle(.secondary)
+                    }
                 }
 
-                NavigationLink("Abrir contenido de la app") {
-                    ContentView()
-                }
-                .buttonStyle(.borderedProminent)
+                Section("Asistente IA") {
+                    NavigationLink {
+                        ChatbotView()
+                    } label: {
+                        Label("Chatbot de dudas", systemImage: "bubble.left.and.bubble.right.fill")
+                    }
 
-                Button("Cerrar sesión") {
-                    authViewModel.signOut()
+                    NavigationLink {
+                        SkinAnalysisView()
+                    } label: {
+                        Label("Camara + prediagnostico", systemImage: "camera.viewfinder")
+                    }
                 }
-                .buttonStyle(.bordered)
 
-                Spacer()
+                Section("App") {
+                    NavigationLink("Abrir contenido existente") {
+                        ContentView()
+                    }
+
+                    Button("Cerrar sesión", role: .destructive) {
+                        authViewModel.signOut()
+                    }
+                }
             }
-            .padding()
             .navigationTitle("HappySkin")
         }
     }
