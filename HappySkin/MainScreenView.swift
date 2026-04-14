@@ -43,6 +43,7 @@ struct MainScreenView: View {
 
                         statusCard
                         questionsCard
+                        skinAnalysisCard
                         actionCard
 
                         Button("Cerrar sesión") {
@@ -93,32 +94,65 @@ struct MainScreenView: View {
     }
 
     private var questionsCard: some View {
-        RoundedRectangle(cornerRadius: 15, style: .continuous)
-            .fill(Color(red: 26 / 255, green: 34 / 255, blue: 48 / 255))
-            .frame(height: 205)
-            .overlay(alignment: .topLeading) {
-                VStack(alignment: .leading, spacing: 10) {
-                    HStack(spacing: 10) {
-                        Image(systemName: "questionmark.circle.fill")
-                            .font(.system(size: 30))
-                            .foregroundStyle(Color(red: 107 / 255, green: 179 / 255, blue: 1))
-                        Text("¿Tienes alguna duda?")
-                            .font(.system(size: 20, weight: .medium))
-                            .foregroundStyle(Color(red: 230 / 255, green: 237 / 255, blue: 243 / 255))
-                    }
-                    .padding(.leading, 8)
-                    .padding(.top, 6)
+        NavigationLink {
+            ChatbotView()
+        } label: {
+            RoundedRectangle(cornerRadius: 15, style: .continuous)
+                .fill(Color(red: 26 / 255, green: 34 / 255, blue: 48 / 255))
+                .frame(height: 205)
+                .overlay(alignment: .topLeading) {
+                    VStack(alignment: .leading, spacing: 10) {
+                        HStack(spacing: 10) {
+                            Image(systemName: "bubble.left.and.bubble.right.fill")
+                                .font(.system(size: 30))
+                                .foregroundStyle(Color(red: 107 / 255, green: 179 / 255, blue: 1))
+                            Text("¿Tienes alguna duda?")
+                                .font(.system(size: 20, weight: .medium))
+                                .foregroundStyle(Color(red: 230 / 255, green: 237 / 255, blue: 243 / 255))
+                        }
+                        .padding(.leading, 8)
+                        .padding(.top, 6)
 
-                    LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 10) {
-                        questionChip("¿Cómo se ve mi piel hoy?")
-                        questionChip("¿Todo se ve dentro de lo normal?")
-                        questionChip("¿Hay zonas que debería cuidar más?")
-                        questionChip("¿Mi piel ha cambiado un poco?")
+                        LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 10) {
+                            questionChip("¿Cómo se ve mi piel hoy?")
+                            questionChip("¿Todo se ve dentro de lo normal?")
+                            questionChip("¿Hay zonas que debería cuidar más?")
+                            questionChip("¿Mi piel ha cambiado un poco?")
+                        }
+                        .padding(.horizontal, 8)
                     }
-                    .padding(.horizontal, 8)
+                    .padding(.top, 8)
                 }
-                .padding(.top, 8)
-            }
+        }
+    }
+
+    private var skinAnalysisCard: some View {
+        NavigationLink {
+            SkinAnalysisView()
+        } label: {
+            RoundedRectangle(cornerRadius: 15, style: .continuous)
+                .fill(Color(red: 26 / 255, green: 34 / 255, blue: 48 / 255))
+                .frame(height: 205)
+                .overlay {
+                    VStack(spacing: 12) {
+                        Image(systemName: "camera.viewfinder")
+                            .font(.system(size: 72))
+                            .foregroundStyle(Color(red: 107 / 255, green: 179 / 255, blue: 1))
+                            .padding(.top, 12)
+
+                        Text("Cámara + Prediagnóstico")
+                            .font(.system(size: 30, weight: .medium))
+                            .foregroundStyle(Color(red: 230 / 255, green: 237 / 255, blue: 243 / 255))
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 45)
+                            .background(Color(red: 76 / 255, green: 154 / 255, blue: 1))
+                            .clipShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
+                            .shadow(color: .black.opacity(0.25), radius: 4, x: 0, y: 4)
+                            .padding(.horizontal, 41)
+                            .padding(.bottom, 10)
+                    }
+                }
+        }
     }
 
     private var actionCard: some View {
@@ -127,7 +161,7 @@ struct MainScreenView: View {
             .frame(height: 205)
             .overlay {
                 VStack(spacing: 12) {
-                    Image(systemName: "camera.viewfinder")
+                    Image(systemName: "doc.text.magnifyingglass")
                         .font(.system(size: 72))
                         .foregroundStyle(Color(red: 107 / 255, green: 179 / 255, blue: 1))
                         .padding(.top, 12)

@@ -8,11 +8,14 @@
 import SwiftUI
 import SwiftData
 import FirebaseCore
-#if canImport(FBSDKCoreKit)
-import FBSDKCoreKit
+#if canImport(FacebookCore)
+import FacebookCore
 #endif
 #if canImport(GoogleSignIn)
 import GoogleSignIn
+#endif
+#if canImport(FacebookLogin)
+import FacebookLogin
 #endif
 
 #if canImport(UIKit)
@@ -24,7 +27,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         FirebaseApp.configure()
-#if canImport(FBSDKCoreKit)
+#if canImport(FacebookCore)
     ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
 #endif
         return true
@@ -34,7 +37,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
              open url: URL,
              options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
     var handled = false
-#if canImport(FBSDKCoreKit)
+    #if canImport(FacebookCore)
     handled = ApplicationDelegate.shared.application(app, open: url, options: options)
 #endif
 #if canImport(GoogleSignIn)

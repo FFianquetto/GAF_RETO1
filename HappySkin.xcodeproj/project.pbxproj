@@ -15,7 +15,7 @@
 		28F6CC012F8EB10000AAE561 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 28F6CC002F8EB10000AAE561 /* FirebaseAuth */; };
 		28F6CC032F8EB10000AAE561 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 28F6CC022F8EB10000AAE561 /* GoogleSignIn */; };
 		28F6CC052F8EB10000AAE561 /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 28F6CC042F8EB10000AAE561 /* FacebookLogin */; };
-		28F6CC072F8EB10000AAE561 /* FBSDKCoreKit in Frameworks */ = {isa = PBXBuildFile; productRef = 28F6CC062F8EB10000AAE561 /* FBSDKCoreKit */; };
+		28F6CC072F8EB10000AAE561 /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = 28F6CC062F8EB10000AAE561 /* FacebookCore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,7 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				28F6CC072F8EB10000AAE561 /* FBSDKCoreKit in Frameworks */,
+				28F6CC072F8EB10000AAE561 /* FacebookCore in Frameworks */,
 				28F6CC052F8EB10000AAE561 /* FacebookLogin in Frameworks */,
 				28F6CC032F8EB10000AAE561 /* GoogleSignIn in Frameworks */,
 				28F6CC012F8EB10000AAE561 /* FirebaseAuth in Frameworks */,
@@ -133,7 +133,7 @@
 			);
 			name = HappySkin;
 			packageProductDependencies = (
-				28F6CC062F8EB10000AAE561 /* FBSDKCoreKit */,
+				28F6CC062F8EB10000AAE561 /* FacebookCore */,
 				28F6CC042F8EB10000AAE561 /* FacebookLogin */,
 				28F6CC022F8EB10000AAE561 /* GoogleSignIn */,
 				28F6CC002F8EB10000AAE561 /* FirebaseAuth */,
@@ -338,6 +338,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -399,6 +400,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -423,22 +425,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = HappySkin/HappySkin.entitlements;
+				"CODE_SIGNING_ALLOWED[sdk=iphoneos*]" = YES;
+				"CODE_SIGNING_ALLOWED[sdk=iphonesimulator*]" = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"HappySkin/Preview Content\"";
+				DEVELOPMENT_TEAM = 49TXYWV4F3;
 				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
-				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
-				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
-				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
-				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
-				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
-				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
-				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				MARKETING_VERSION = 1.0;
@@ -457,22 +453,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = HappySkin/HappySkin.entitlements;
+				"CODE_SIGNING_ALLOWED[sdk=iphoneos*]" = YES;
+				"CODE_SIGNING_ALLOWED[sdk=iphonesimulator*]" = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"HappySkin/Preview Content\"";
+				DEVELOPMENT_TEAM = 49TXYWV4F3;
 				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
-				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
-				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
-				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
-				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
-				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
-				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
-				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				MARKETING_VERSION = 1.0;
@@ -490,8 +480,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				"CODE_SIGNING_ALLOWED[sdk=iphoneos*]" = YES;
+				"CODE_SIGNING_ALLOWED[sdk=iphonesimulator*]" = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
 				MARKETING_VERSION = 1.0;
@@ -510,8 +503,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				"CODE_SIGNING_ALLOWED[sdk=iphoneos*]" = YES;
+				"CODE_SIGNING_ALLOWED[sdk=iphonesimulator*]" = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
 				MARKETING_VERSION = 1.0;
@@ -529,8 +525,11 @@
 		28F6CBEB2F8E9E8800AAE561 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGNING_ALLOWED[sdk=iphoneos*]" = YES;
+				"CODE_SIGNING_ALLOWED[sdk=iphonesimulator*]" = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
 				MARKETING_VERSION = 1.0;
@@ -548,8 +547,11 @@
 		28F6CBEC2F8E9E8800AAE561 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGNING_ALLOWED[sdk=iphoneos*]" = YES;
+				"CODE_SIGNING_ALLOWED[sdk=iphonesimulator*]" = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
 				MARKETING_VERSION = 1.0;
@@ -633,26 +635,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		28F6CC002F8EB10000AAE561 /* FirebaseAuth */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 28F6CBEF2F8EA1A800AAE561 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAuth;
-		};
-		28F6CC022F8EB10000AAE561 /* GoogleSignIn */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 28F6CC082F8EB10000AAE561 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
-			productName = GoogleSignIn;
-		};
-		28F6CC042F8EB10000AAE561 /* FacebookLogin */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 28F6CC092F8EB10000AAE561 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
-			productName = FacebookLogin;
-		};
-		28F6CC062F8EB10000AAE561 /* FBSDKCoreKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 28F6CC092F8EB10000AAE561 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
-			productName = FBSDKCoreKit;
-		};
 		28F6CBF02F8EA1A800AAE561 /* FirebaseAI */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 28F6CBEF2F8EA1A800AAE561 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
@@ -677,6 +659,26 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 28F6CBEF2F8EA1A800AAE561 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAnalyticsIdentitySupport;
+		};
+		28F6CC002F8EB10000AAE561 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 28F6CBEF2F8EA1A800AAE561 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		28F6CC022F8EB10000AAE561 /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 28F6CC082F8EB10000AAE561 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
+		};
+		28F6CC042F8EB10000AAE561 /* FacebookLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 28F6CC092F8EB10000AAE561 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookLogin;
+		};
+		28F6CC062F8EB10000AAE561 /* FacebookCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 28F6CC092F8EB10000AAE561 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookCore;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

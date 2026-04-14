@@ -9,11 +9,11 @@ import FirebaseCore
 #if canImport(GoogleSignIn)
 import GoogleSignIn
 #endif
+#if canImport(FacebookCore)
+import FacebookCore
+#endif
 #if canImport(FacebookLogin)
 import FacebookLogin
-#endif
-#if canImport(FBSDKCoreKit)
-import FBSDKCoreKit
 #endif
 #if canImport(UIKit)
 import UIKit
@@ -116,7 +116,7 @@ final class AuthViewModel: ObservableObject {
     }
 
     func signInWithFacebook() async {
-#if canImport(FacebookLogin) && canImport(FBSDKCoreKit) && canImport(UIKit)
+#if canImport(FacebookLogin) && canImport(FacebookCore) && canImport(UIKit)
         guard let rootViewController = Self.rootViewController() else {
             errorMessage = "No se encontró una pantalla para presentar Facebook Login."
             return
