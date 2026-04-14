@@ -4,6 +4,7 @@
 //
 
 import SwiftUI
+import Charts
 
 struct MainScreenView: View {
     private struct ChatRoute: Hashable, Identifiable {
@@ -13,8 +14,10 @@ struct MainScreenView: View {
 
     @EnvironmentObject private var authViewModel: AuthViewModel
     @Environment(\.locale) private var locale
+    @StateObject private var historyViewModel = SkinScanHistoryViewModel()
     @State private var quickQuestion = ""
     @State private var chatRoute: ChatRoute?
+    @State private var isShowingFullAnalysis = false
 
     private var displayName: String {
         if let profileName = authViewModel.profile?.displayName, !profileName.isEmpty {
@@ -76,6 +79,12 @@ struct MainScreenView: View {
                 .navigationDestination(item: $chatRoute) { route in
                     ChatbotView(initialPrompt: route.prompt)
                 }
+                .task(id: authViewModel.user?.uid) {
+                    await historyViewModel.refresh(for: authViewModel.user)
+                }
+                .sheet(isPresented: $isShowingFullAnalysis) {
+                    fullAnalysisSheet
+                }
             }
         }
     }
@@ -85,7 +94,7 @@ struct MainScreenView: View {
             .fill(Color(red: 26 / 255, green: 34 / 255, blue: 48 / 255))
             .overlay(
                 RoundedRectangle(cornerRadius: 20, style: .continuous)
-                    .stroke(Color.white.opacity(0.07), lineWidth: 1)
+                    .stroke(Color.white.opacity(0.12), lineWidth: 1.5)
             )
             .frame(height: 136)
             .overlay {
@@ -127,37 +136,136 @@ struct MainScreenView: View {
     private var statusCard: some View {
         RoundedRectangle(cornerRadius: 16, style: .continuous)
             .fill(Color(red: 26 / 255, green: 34 / 255, blue: 48 / 255))
-            .frame(height: 210)
+            .overlay(
+                RoundedRectangle(cornerRadius: 16, style: .continuous)
+                    .stroke(Color.white.opacity(0.1), lineWidth: 1.5)
+            )
             .overlay(alignment: .topLeading) {
-                VStack(alignment: .leading, spacing: 10) {
-                    HStack(spacing: 6) {
-                        Text("Estado actual:")
+                VStack(alignment: .leading, spacing: 12) {
+                    HStack {
+                        Text("Estado actual")
                             .font(.system(size: 22, weight: .semibold))
                             .foregroundStyle(Color(red: 107 / 255, green: 179 / 255, blue: 1))
-                        Text("Saludable")
-                            .font(.system(size: 18, weight: .semibold))
-                            .foregroundStyle(Color(red: 39 / 255, green: 174 / 255, blue: 96 / 255))
+
+                        Spacer(minLength: 8)
+
+                        if let latestScan = historyViewModel.latestScan {
+                            Text(latestScan.recommendation.capitalized)
+                                .font(.system(size: 12, weight: .semibold))
+                                .foregroundStyle(.white)
+                                .padding(.horizontal, 10)
+                                .padding(.vertical, 5)
+                                .background(recommendationColor(for: latestScan.recommendation))
+                                .clipShape(Capsule())
+                        }
                     }
 
-                    RoundedRectangle(cornerRadius: 12, style: .continuous)
-                        .fill(Color(red: 19 / 255, green: 26 / 255, blue: 36 / 255))
-                        .frame(height: 147)
-                        .overlay {
-                            Image(systemName: "heart.text.square.fill")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 90, height: 90)
+                    if historyViewModel.isLoading {
+                        ProgressView("Cargando historial...")
+                            .tint(.white)
+                            .foregroundStyle(.white.opacity(0.85))
+                    } else if let latestScan = historyViewModel.latestScan {
+                        HStack(alignment: .top, spacing: 12) {
+                            if let image = latestScan.image {
+                                Image(uiImage: image)
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: 92, height: 92)
+                                    .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+                            }
+
+                            VStack(alignment: .leading, spacing: 6) {
+                                Text(latestScan.createdAt.formatted(date: .abbreviated, time: .shortened))
+                                    .font(.system(size: 12, weight: .semibold))
+                                    .foregroundStyle(Color(red: 107 / 255, green: 179 / 255, blue: 1))
+
+                                Text(latestScan.analysisText)
+                                    .font(.system(size: 12, weight: .regular))
+                                    .foregroundStyle(Color(red: 230 / 255, green: 237 / 255, blue: 243 / 255))
+                                    .lineLimit(4)
+
+                                Button("Ver respuesta completa") {
+                                    isShowingFullAnalysis = true
+                                }
+                                .font(.system(size: 12, weight: .semibold))
                                 .foregroundStyle(Color(red: 107 / 255, green: 179 / 255, blue: 1))
+                            }
                         }
+
+                        confidenceChart
+                    } else {
+                        RoundedRectangle(cornerRadius: 12, style: .continuous)
+                            .fill(Color(red: 19 / 255, green: 26 / 255, blue: 36 / 255))
+                            .frame(height: 120)
+                            .overlay {
+                                VStack(spacing: 8) {
+                                    Image(systemName: "waveform.path.ecg")
+                                        .font(.title)
+                                        .foregroundStyle(Color(red: 107 / 255, green: 179 / 255, blue: 1))
+                                    Text("Aun no tienes escaneos guardados")
+                                        .font(.system(size: 14, weight: .medium))
+                                        .foregroundStyle(Color(red: 230 / 255, green: 237 / 255, blue: 243 / 255))
+                                }
+                            }
+                    }
+
+                    if let error = historyViewModel.errorMessage {
+                        Text(error)
+                            .font(.system(size: 12, weight: .medium))
+                            .foregroundStyle(Color.red.opacity(0.85))
+                    }
                 }
-                .padding(.horizontal, 13)
-                .padding(.top, 14)
+                .padding(14)
             }
+            .frame(minHeight: 230)
+    }
+
+    private var fullAnalysisSheet: some View {
+        NavigationStack {
+            ScrollView {
+                VStack(alignment: .leading, spacing: 12) {
+                    Text("Respuesta completa del modelo")
+                        .font(.system(size: 20, weight: .bold))
+                        .foregroundStyle(Color(red: 16 / 255, green: 25 / 255, blue: 38 / 255))
+
+                    if let latestScan = historyViewModel.latestScan {
+                        Text(latestScan.createdAt.formatted(date: .abbreviated, time: .shortened))
+                            .font(.system(size: 12, weight: .semibold))
+                            .foregroundStyle(Color(red: 76 / 255, green: 154 / 255, blue: 1))
+
+                        Text(latestScan.analysisText)
+                            .font(.system(size: 15, weight: .regular))
+                            .foregroundStyle(Color(red: 16 / 255, green: 25 / 255, blue: 38 / 255))
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .padding(14)
+                            .background(Color(red: 240 / 255, green: 245 / 255, blue: 250 / 255))
+                            .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+                    } else {
+                        Text("No hay analisis disponible por ahora.")
+                            .font(.system(size: 14, weight: .medium))
+                            .foregroundStyle(.secondary)
+                    }
+                }
+                .padding(18)
+            }
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button("Cerrar") {
+                        isShowingFullAnalysis = false
+                    }
+                }
+            }
+        }
+        .presentationDetents([.medium, .large])
     }
 
     private var questionsCard: some View {
         RoundedRectangle(cornerRadius: 16, style: .continuous)
             .fill(Color(red: 26 / 255, green: 34 / 255, blue: 48 / 255))
+            .overlay(
+                RoundedRectangle(cornerRadius: 16, style: .continuous)
+                    .stroke(Color.white.opacity(0.1), lineWidth: 1.5)
+            )
             .frame(height: 255)
             .overlay(alignment: .topLeading) {
                 VStack(alignment: .leading, spacing: 11) {
@@ -171,23 +279,34 @@ struct MainScreenView: View {
                     }
                     .padding(.top, 8)
 
-                    HStack(spacing: 8) {
-                        TextField("Escribe tu duda y enviala al chatbot...", text: $quickQuestion, axis: .vertical)
+                    HStack(spacing: 10) {
+                        TextField("Escribe tu pregunta...", text: $quickQuestion, axis: .vertical)
                             .lineLimit(1...3)
-                            .padding(.horizontal, 12)
-                            .padding(.vertical, 10)
-                            .background(Color(red: 19 / 255, green: 26 / 255, blue: 36 / 255))
+                            .padding(.horizontal, 14)
+                            .padding(.vertical, 12)
+                            .background(Color(red: 22 / 255, green: 33 / 255, blue: 50 / 255))
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 12, style: .continuous)
+                                    .stroke(
+                                        quickQuestion.isEmpty ? 
+                                        Color.white.opacity(0.15) :
+                                        Color(red: 107 / 255, green: 179 / 255, blue: 1).opacity(0.6),
+                                        lineWidth: 1.5
+                                    )
+                            )
                             .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
-                            .foregroundStyle(Color(red: 230 / 255, green: 237 / 255, blue: 243 / 255))
+                            .foregroundStyle(Color(red: 240 / 255, green: 245 / 255, blue: 250 / 255))
 
                         Button {
                             sendQuickQuestion()
                         } label: {
                             Image(systemName: "paperplane.fill")
                                 .font(.system(size: 18, weight: .semibold))
-                                .frame(width: 44, height: 44)
+                                .frame(width: 48, height: 48)
+                                .foregroundStyle(.white)
                         }
                         .buttonStyle(.borderedProminent)
+                        .tint(Color(red: 76 / 255, green: 154 / 255, blue: 1))
                     }
 
                     LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 10) {
@@ -208,6 +327,10 @@ struct MainScreenView: View {
         } label: {
             RoundedRectangle(cornerRadius: 16, style: .continuous)
                 .fill(Color(red: 26 / 255, green: 34 / 255, blue: 48 / 255))
+                .overlay(
+                    RoundedRectangle(cornerRadius: 16, style: .continuous)
+                        .stroke(Color.white.opacity(0.1), lineWidth: 1.5)
+                )
                 .frame(height: 195)
                 .overlay {
                     VStack(spacing: 12) {
@@ -231,6 +354,59 @@ struct MainScreenView: View {
         }
     }
 
+    private var confidenceChart: some View {
+        let confidencePoints = historyViewModel.scans
+            .prefix(7)
+            .reversed()
+            .compactMap { scan -> (Date, Double)? in
+                guard let confidence = scan.confidence else { return nil }
+                return (scan.createdAt, confidence)
+            }
+
+        return Group {
+            if confidencePoints.count >= 2 {
+                Chart(confidencePoints, id: \.0) { point in
+                    LineMark(
+                        x: .value("Fecha", point.0),
+                        y: .value("Confianza", point.1)
+                    )
+                    .foregroundStyle(Color(red: 107 / 255, green: 179 / 255, blue: 1))
+
+                    AreaMark(
+                        x: .value("Fecha", point.0),
+                        y: .value("Confianza", point.1)
+                    )
+                    .foregroundStyle(
+                        LinearGradient(
+                            colors: [
+                                Color(red: 107 / 255, green: 179 / 255, blue: 1).opacity(0.32),
+                                Color(red: 107 / 255, green: 179 / 255, blue: 1).opacity(0.04),
+                            ],
+                            startPoint: .top,
+                            endPoint: .bottom
+                        )
+                    )
+                }
+                .chartYScale(domain: 0 ... 100)
+                .chartYAxis {
+                    AxisMarks(position: .leading)
+                }
+                .frame(height: 120)
+            }
+        }
+    }
+
+    private func recommendationColor(for recommendation: String) -> Color {
+        switch recommendation.lowercased() {
+        case "revision profesional sugerida":
+            return Color.orange.opacity(0.9)
+        case "seguimiento en dias":
+            return Color(red: 76 / 255, green: 154 / 255, blue: 1)
+        default:
+            return Color(red: 39 / 255, green: 174 / 255, blue: 96 / 255)
+        }
+    }
+
     private func sendQuickQuestion() {
         let trimmed = quickQuestion.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !trimmed.isEmpty else { return }
@@ -247,13 +423,23 @@ struct MainScreenView: View {
             openChat(with: text)
         } label: {
             Text(text)
-                .font(.system(size: 13, weight: .medium))
-                .foregroundStyle(Color(red: 230 / 255, green: 237 / 255, blue: 243 / 255))
+                .font(.system(size: 13, weight: .semibold))
+                .foregroundStyle(.white)
                 .multilineTextAlignment(.center)
-                .frame(maxWidth: .infinity, minHeight: 38)
-                .padding(.horizontal, 8)
-                .background(Color(red: 76 / 255, green: 154 / 255, blue: 1))
+                .frame(maxWidth: .infinity, minHeight: 40)
+                .padding(.horizontal, 10)
+                .background(
+                    LinearGradient(
+                        colors: [
+                            Color(red: 76 / 255, green: 154 / 255, blue: 1),
+                            Color(red: 66 / 255, green: 144 / 255, blue: 0.95)
+                        ],
+                        startPoint: .topLeading,
+                        endPoint: .bottomTrailing
+                    )
+                )
                 .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+                .shadow(color: Color(red: 76 / 255, green: 154 / 255, blue: 1).opacity(0.3), radius: 6, x: 0, y: 2)
         }
         .buttonStyle(.plain)
     }

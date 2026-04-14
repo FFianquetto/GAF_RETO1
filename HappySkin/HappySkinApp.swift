@@ -27,6 +27,8 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         FirebaseApp.configure()
+        DailyNotificationManager.shared.configureDailyReminders()
+        UINavigationItem.appearance().backButtonDisplayMode = .minimal
 #if canImport(FacebookCore)
     ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
 #endif
@@ -70,6 +72,7 @@ struct HappySkinApp: App {
     var body: some Scene {
         WindowGroup {
             RootView()
+                .environment(\.locale, Locale(identifier: "es_MX"))
         }
         .modelContainer(sharedModelContainer)
     }

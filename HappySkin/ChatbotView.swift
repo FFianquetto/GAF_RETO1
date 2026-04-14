@@ -92,7 +92,7 @@ struct ChatbotView: View {
                 }
             }
         )) {
-            Button("OK", role: .cancel) {}
+            Button("Aceptar", role: .cancel) {}
         } message: {
             Text(viewModel.errorMessage ?? "")
         }
