@@ -36,11 +36,10 @@ final class ChatbotViewModel: ObservableObject {
         chat = service.startChat()
     }
 
-    func sendCurrentMessage() async {
-        let trimmed = inputText.trimmingCharacters(in: .whitespacesAndNewlines)
+    func sendMessage(_ text: String) async {
+        let trimmed = text.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !trimmed.isEmpty else { return }
 
-        inputText = ""
         messages.append(ChatMessage(role: .user, text: trimmed))
         isLoading = true
 
@@ -59,5 +58,13 @@ final class ChatbotViewModel: ObservableObject {
         }
 
         isLoading = false
+    }
+
+    func sendCurrentMessage() async {
+        let trimmed = inputText.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmed.isEmpty else { return }
+
+        inputText = ""
+        await sendMessage(trimmed)
     }
 }

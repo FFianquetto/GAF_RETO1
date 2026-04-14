@@ -6,7 +6,14 @@
 import SwiftUI
 
 struct ChatbotView: View {
-    @StateObject private var viewModel = ChatbotViewModel()
+    @StateObject private var viewModel: ChatbotViewModel
+    private let initialPrompt: String?
+    @State private var hasSentInitialPrompt = false
+
+    init(initialPrompt: String? = nil) {
+        self.initialPrompt = initialPrompt
+        _viewModel = StateObject(wrappedValue: ChatbotViewModel())
+    }
 
     var body: some View {
         VStack(spacing: 0) {
@@ -67,6 +74,16 @@ struct ChatbotView: View {
             .padding()
         }
         .navigationTitle("Chatbot")
+        .onAppear {
+            guard !hasSentInitialPrompt,
+                  let initialPrompt,
+                  !initialPrompt.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else {
+                return
+            }
+
+            hasSentInitialPrompt = true
+            Task { await viewModel.sendMessage(initialPrompt) }
+        }
         .alert("Error", isPresented: Binding(
             get: { viewModel.errorMessage != nil },
             set: { newValue in
